@@ -1,16 +1,39 @@
-1. To run, create virtual environment ->
-python -m venv venv
+# Select2 Test
 
-2. Activate it
-source venv/bin/activate
+This is a brief guide to set up and run the application.
 
-3. Download dependencies
-pip install -r requirements.txt
+## Prerequisites
 
-4. Run app
-python app.py
+- Python 3.x
 
-5. Check on browser
-Go to localhost:5000/
+## Installation
 
+1. Create a virtual environment:
 
+    ```bash
+    python -m venv venv
+    ```
+
+2. Activate the virtual environment:
+
+    ```bash
+    source venv/bin/activate
+    ```
+
+3. Download project dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Usage
+
+1. Run the application:
+
+    ```bash
+    python app.py
+    ```
+
+2. Access the application in your web browser:
+
+    Open a web browser and navigate to [localhost:5000/](http://localhost:5000/)
