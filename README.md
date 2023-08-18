@@ -54,3 +54,9 @@ Upon adding the third field, one of the previously added field loses select2 fun
 
 ![Screenshot 2023-08-18 at 10 53 10](https://github.com/darkchoc/Select2Testing/assets/19534611/fdbbf3da-9694-4293-9160-690e15672bf9)
 
+## Findings till now
+
+The issue is not occuring if I assing a monotonically increasing counter as index of the new form. Adjusting indices of already present forms is not causing the issue as long as the new form added has an index that hasn't been used before.
+
+Moreover, I have tried modifying properties such as 'data-select2-id' and 'aria-labelledby' (in updateFormWithNewIndex function of add_remove.js), that I can see in some of the tags. These properties/attributes are derived from id of the field, so I tried to match them to the modified id. But this doesn't solve the problem.
+
