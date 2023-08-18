@@ -1,44 +1,44 @@
 document.addEventListener('DOMContentLoaded', function(event) {
     // Add select2 to select tags
-    let formsContainer = document.getElementById('forms-container');
-    let selectTags = formsContainer.querySelectorAll('select');
+    let fieldsContainer = document.getElementById('fields-container');
+    let selectTags = fieldsContainer.querySelectorAll('select');
     for(let selectTag of selectTags){
         $(selectTag).select2();
     }
 
     // Remove functionality.
-    formsContainer.addEventListener('click', function(event) {
+    fieldsContainer.addEventListener('click', function(event) {
         event.preventDefault();
         if (!event.target.classList.contains('remove')) {
             return false;
         }
     
         let currentElement = event.target;
-        let subform = currentElement.closest('.form-instance');
-        let subformIndex = subform.dataset.index;
+        let field = currentElement.closest('.field-instance');
+        let fieldIndex = field.dataset.index;
 
-        subform.remove();
+        field.remove();
 
-        adjustIndices(subformIndex);
+        adjustIndices(fieldIndex);
     });
 
     // Add functionality
     addButton = document.getElementById('add');
     addButton.addEventListener('click', function(event){
-        let templateForm = document.getElementById('form-_-instance');
-        let newForm = templateForm.cloneNode(true);
+        let templateField = document.getElementById('field-_-instance');
+        let newField = templateField.cloneNode(true);
 
-        let lastForm = document.getElementById('forms-container').querySelector('.form-instance:last-child');
-        let lastFormIndex = parseInt(lastForm.dataset.index);
+        let lastField = document.getElementById('fields-container').querySelector('.field-instance:last-child');
+        let lastFieldIndex = parseInt(lastField.dataset.index);
 
-        updateFormWithNewIndex(newForm, /(-)_(-)/, lastFormIndex+1);
+        updateFieldWithNewIndex(newField, /(-)_(-)/, lastFieldIndex+1);
 
-        formsContainer.insertAdjacentElement('beforeend', newForm);
+        fieldsContainer.insertAdjacentElement('beforeend', newField);
 
-        newForm.classList.remove('is_hidden');
-        newForm.classList.add('form-instance');
+        newField.classList.remove('is_hidden');
+        newField.classList.add('field-instance');
 
-        let selectTags = newForm.querySelectorAll('select');
+        let selectTags = newField.querySelectorAll('select');
         for(let selectTag of selectTags){
             $(selectTag).select2();
         } 
@@ -47,24 +47,24 @@ document.addEventListener('DOMContentLoaded', function(event) {
 });
 
 function adjustIndices(removedIndex){
-    let formInstances = document.querySelectorAll('.form-instance');
-    for(let formInstance of formInstances){
-        let index = formInstance.dataset.index;
+    let fieldInstances = document.querySelectorAll('.field-instance');
+    for(let fieldInstance of fieldInstances){
+        let index = fieldInstance.dataset.index;
         if (index < removedIndex){
             continue;
         }
-        updateFormWithNewIndex(formInstance, /(-)\d+(-)/, index-1);
+        updateFieldWithNewIndex(fieldInstance, /(-)\d+(-)/, index-1);
     }
 }
 
-function updateFormWithNewIndex(form, regex, index){
-    form.id = form.id.replace(regex, `$1${index}$2`);
-    form.dataset.index = index;
+function updateFieldWithNewIndex(field, regex, newIndex){
+    field.id = field.id.replace(regex, `$1${newIndex}$2`);
+    field.dataset.index = newIndex;
 
-    for(let elem of form.querySelectorAll('*')) {
+    for(let elem of field.querySelectorAll('*')) {
         for(let attr of ['id', 'name', 'for']){
             if(elem.hasAttribute(attr)){
-                elem.setAttribute(attr, elem.getAttribute(attr).replace(/(-)_(-)/, `$1${index}$2`));
+                elem.setAttribute(attr, elem.getAttribute(attr).replace(/(-)_(-)/, `$1${newIndex}$2`));
             }
         }
     }

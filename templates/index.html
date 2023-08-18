@@ -7,15 +7,15 @@
     <body>
         <h1>Hello</h1>
         <form action="" method="post">
-            <div id="forms-container">
-                <div id='form-0-instance' class="form-instance" data-index="0">
+            <div id="fields-container">
+                <div id='field-0-instance' class="field-instance" data-index="0">
                     {{ form.phone_number.label }}
                     {{ form.phone_number() }}
                 </div>
             </div>
             <a id="add" href="#">Add more</a>
         </form>
-        <div id="form-_-instance" class="is_hidden" data-index="_">
+        <div id="field-_-instance" class="is_hidden" data-index="_">
             {{ template_form.phone_number.label }}
             {{ template_form.phone_number() }}
             <a class="remove" href="#">Remove</a>

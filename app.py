@@ -9,7 +9,7 @@ class MyForm(Form):
 
 @app.route('/')
 def index():
-    return render_template('index.html', form=MyForm(prefix='form-0-'), template_form=MyForm(prefix='form-_-'))
+    return render_template('index.html', form=MyForm(prefix='field-0-'), template_form=MyForm(prefix='field-_-'))
 
 if __name__ == "__main__":
     app.run(debug=True)

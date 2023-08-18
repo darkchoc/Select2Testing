@@ -1,4 +1,4 @@
-1. To run, create virtual environment ->
+1. To run, create virtual environment \n
 python -m venv venv
 
 2. Activate it
