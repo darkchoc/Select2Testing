@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Select 2 Test</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <form action="" method="post">
+            <div id="forms-container">
+                <div id='form-0-instance' class="form-instance" data-index="0">
+                    {{ form.phone_number.label }}
+                    {{ form.phone_number() }}
+                </div>
+            </div>
+            <a id="add" href="#">Add more</a>
+        </form>
+        <div id="form-_-instance" class="is_hidden" data-index="_">
+            {{ template_form.phone_number.label }}
+            {{ template_form.phone_number() }}
+            <a class="remove" href="#">Remove</a>
+        </div>
+    </body>
+    <style>
+        .is_hidden {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script src="{{ url_for('static', filename='js/add_remove.js') }}"></script>
+</html>
